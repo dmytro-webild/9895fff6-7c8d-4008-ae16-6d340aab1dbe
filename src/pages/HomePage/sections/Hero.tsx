@@ -36,7 +36,7 @@ export default function HeroSection(): React.JSX.Element {
             "Bilbao",
             "Malaga",
           ]}
-          imageSrc="http://img.b2bpic.net/free-photo/close-up-happy-healthy-young-woman-with-dark-curly-hair-lying-comfortable-sofa-terrace_197531-22796.jpg"
+          imageSrc="https://images.pexels.com/photos/5325768/pexels-photo-5325768.jpeg?auto=compress&cs=tinysrgb&h=650&w=940&id=5325768"
         />
         </SectionErrorBoundary>
       </div>
