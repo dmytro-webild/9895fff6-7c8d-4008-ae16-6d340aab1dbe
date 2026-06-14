@@ -5,14 +5,66 @@ import TextAnimation from "@/components/ui/TextAnimation";
 import ImageOrVideo from "@/components/ui/ImageOrVideo";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { BadgeCheck } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const DraggableMarqueeRow = ({ items, duration, reverse = false }: { items: any[], duration: string, reverse?: boolean }) => {
   const containerRef = useRef(null);
+  const trackRef = useRef(null);
+  const isInitialized = useRef(false);
+  
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+
+  useEffect(() => {
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    
+    const durationMs = parseFloat(duration) * 1000;
+    
+    const animate = (time: number) => {
+      const deltaTime = time - lastTime;
+      lastTime = time;
+      
+      if (containerRef.current && trackRef.current) {
+        const container = containerRef.current as any;
+        const track = trackRef.current as any;
+        const singleCopyWidth = track.scrollWidth / 4;
+        
+        if (singleCopyWidth > 0) {
+          if (!isInitialized.current) {
+            if (reverse) {
+              container.scrollLeft = singleCopyWidth * 2;
+            }
+            isInitialized.current = true;
+          }
+          
+          if (!isHovered && !isDragging) {
+            const speed = singleCopyWidth / durationMs;
+            const delta = speed * deltaTime;
+            
+            if (reverse) {
+              container.scrollLeft -= delta;
+              if (container.scrollLeft <= 0) {
+                container.scrollLeft += singleCopyWidth * 2;
+              }
+            } else {
+              container.scrollLeft += delta;
+              if (container.scrollLeft >= singleCopyWidth * 2) {
+                container.scrollLeft -= singleCopyWidth * 2;
+              }
+            }
+          }
+        }
+      }
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered, isDragging, duration, reverse]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
@@ -31,11 +83,27 @@ const DraggableMarqueeRow = ({ items, duration, reverse = false }: { items: any[
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !containerRef.current) return;
+    if (!isDragging || !containerRef.current || !trackRef.current) return;
     e.preventDefault();
     const x = e.pageX - (containerRef.current as any).offsetLeft;
     const walk = (x - startX) * 2;
-    (containerRef.current as any).scrollLeft = scrollLeft - walk;
+    
+    let newScrollLeft = scrollLeft - walk;
+    const singleCopyWidth = (trackRef.current as any).scrollWidth / 4;
+    
+    if (singleCopyWidth > 0) {
+      if (newScrollLeft <= 0) {
+        newScrollLeft += singleCopyWidth * 2;
+        setStartX(e.pageX - (containerRef.current as any).offsetLeft);
+        setScrollLeft(newScrollLeft + walk);
+      } else if (newScrollLeft >= singleCopyWidth * 2) {
+        newScrollLeft -= singleCopyWidth * 2;
+        setStartX(e.pageX - (containerRef.current as any).offsetLeft);
+        setScrollLeft(newScrollLeft + walk);
+      }
+    }
+    
+    (containerRef.current as any).scrollLeft = newScrollLeft;
   };
 
   return (
@@ -47,11 +115,11 @@ const DraggableMarqueeRow = ({ items, duration, reverse = false }: { items: any[
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
-      style={{ overflowX: isHovered ? 'auto' : 'hidden', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
     >
       <div 
-        className={`flex w-max ${isHovered ? '' : (reverse ? 'animate-marquee-horizontal-reverse' : 'animate-marquee-horizontal')} mb-5`} 
-        style={{ animationDuration: duration }}
+        ref={trackRef}
+        className="flex w-max mb-5" 
       >
         {[...items, ...items, ...items, ...items].map((item, i) => (
           <div key={i} className="flex-none w-[300px] md:w-[400px] mx-2.5">
