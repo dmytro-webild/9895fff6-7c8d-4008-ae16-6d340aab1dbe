@@ -1,92 +1,18 @@
-import React from "react";
-import { routes } from "@/routes";
-import NavbarCentered from "@/components/ui/NavbarCentered";
-import HeroBillboard from "@/components/sections/hero/HeroBillboard";
-import FeaturesMediaCards from "@/components/sections/features/FeaturesMediaCards";
-import ContactCta from "@/components/sections/contact/ContactCta";
-import FooterSimple from "@/components/sections/footer/FooterSimple";
+import Button from "@/components/ui/Button";
+import HeroBackgroundSlot from "@/components/ui/HeroBackgroundSlot";
+import TextAnimation from "@/components/ui/TextAnimation";
+import ImageOrVideo from "@/components/ui/ImageOrVideo";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import GridOrCarousel from "@/components/ui/GridOrCarousel";
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <NavbarCentered
-        logo="Webild"
-        navItems={routes.map((r) => ({ name: r.label, href: r.path }))}
-        ctaButton={{ text: "Get Started", href: "/contact" }}
-      />
-
-      <main className="flex-grow">
-        <HeroBillboard
-          tag="Portfolio"
-          title="Our Featured Projects"
-          description="Explore our catalogue of successful digital transformations, innovative designs, and robust engineering solutions."
-          primaryButton={{ text: "Start a Project", href: "/contact" }}
-          secondaryButton={{ text: "Browse Catalogue", href: "#catalogue" }}
-          imageSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
-        />
-
-        <div id="catalogue">
-          <FeaturesMediaCards
-            tag="Catalogue"
-            title="Recent Deliveries"
-            description="A curated selection of our finest work across various industries and technologies."
-            items={[
-              {
-                title: "E-Commerce Platform Redesign",
-                description: "A complete overhaul of a major retail platform, resulting in a 40% increase in conversion rates.",
-                imageSrc: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=2664&auto=format&fit=crop"
-              },
-              {
-                title: "Fintech Mobile Application",
-                description: "A secure and intuitive mobile banking app serving over 1 million active users daily.",
-                imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop"
-              },
-              {
-                title: "Healthcare Dashboard",
-                description: "An analytics dashboard for healthcare providers to monitor patient outcomes in real-time.",
-                imageSrc: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2676&auto=format&fit=crop"
-              },
-              {
-                title: "SaaS Marketing Website",
-                description: "A high-performance marketing site built with modern web technologies to drive lead generation.",
-                imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
-              }
-            ]}
-          />
-        </div>
-
-        <ContactCta
-          tag="Next Steps"
-          text="Ready to build something amazing together?"
-          primaryButton={{ text: "Contact Us", href: "/contact" }}
-          secondaryButton={{ text: "View Services", href: "/services" }}
-        />
-      </main>
-
-      <FooterSimple
-        brand="Webild"
-        copyright="© 2024 Webild. All rights reserved."
-        columns={[
-          {
-            title: "Company",
-            items: [
-              { label: "About", href: "/about" },
-              { label: "Careers", href: "/careers" }
-            ]
-          },
-          {
-            title: "Services",
-            items: [
-              { label: "Design", href: "/services/design" },
-              { label: "Engineering", href: "/services/engineering" }
-            ]
-          }
-        ]}
-        links={[
-          { label: "Privacy Policy", href: "/privacy" },
-          { label: "Terms of Service", href: "/terms" }
-        ]}
-      />
-    </div>
+    <>
+      <div data-webild-section="HeroSplit"><section aria-label="Hero section" className="relative flex items-center h-fit md:h-svh pt-25 pb-20 md:py-0"><HeroBackgroundSlot /><div className="flex flex-col md:flex-row items-center gap-12 md:gap-20 w-content-width mx-auto"><div className="w-full md:w-1/2"><div className="flex flex-col items-center md:items-start gap-3"><div className="px-3 py-1 mb-1 text-sm card rounded w-fit"><p>Selected Works</p></div><TextAnimation text="Curated Madrid Interiors" variant="fade" gradientText={true} tag="h1" className="text-7xl 2xl:text-8xl leading-[1.15] font-semibold text-center md:text-left text-balance" /><TextAnimation text="Explore our portfolio of high-end residential and commercial projects. Each space is a testament to our dedication to texture, light, and personal storytelling." variant="fade" gradientText={false} tag="p" className="md:max-w-8/10 text-lg md:text-xl leading-snug text-center md:text-left text-balance" /><div className="flex flex-wrap max-md:justify-center gap-3 mt-2 md:mt-3"><Button text="View Catalogue" href="#catalogue" variant="primary" /><Button text="Discuss a Project" href="/contact" variant="secondary" animationDelay={0.1} /></div></div></div><ScrollReveal variant="fade-blur" delay={0.2} className="w-full md:w-1/2 h-100 md:h-[65vh] md:max-h-[75svh] p-2 xl:p-3 2xl:p-4 card rounded overflow-hidden"><ImageOrVideo imageSrc="https://img.freepik.com/free-photo/modern-luxury-living-room-interior-design_53876-128916.jpg" /></ScrollReveal></div></section></div>
+      <div data-webild-section="FeaturesMediaGrid"><section aria-label="Features section" className="py-20"><div className="flex flex-col gap-8 md:gap-10"><div className="flex flex-col items-center w-content-width mx-auto gap-2"><div className="px-3 py-1 mb-1 text-sm card rounded w-fit"><p>Portfolio</p></div><TextAnimation text="Curated Spaces" variant="slide-up" gradientText={true} tag="h2" className="md:max-w-8/10 text-6xl 2xl:text-7xl leading-[1.15] font-semibold text-center text-balance" /><TextAnimation text="Explore our collection of bespoke interiors and architectural transformations across Madrid. Each project is a unique narrative of light, texture, and form." variant="slide-up" gradientText={false} tag="p" className="md:max-w-7/10 text-lg md:text-xl leading-snug text-center text-balance" /><div className="flex flex-wrap justify-center gap-3 mt-2 md:mt-3"><Button text="Start Your Project" href="/contact" variant="primary" /><Button text="Our Process" href="/about" variant="secondary" animationDelay={0.1} /></div></div><ScrollReveal variant="slide-up"><GridOrCarousel><div key="Barrio de Salamanca Penthouse" className="flex flex-col gap-4 xl:gap-5 2xl:gap-6 h-full"><div className="aspect-square overflow-hidden"><ImageOrVideo imageSrc="https://picsum.photos/seed/2066822201/1200/800" className="rounded-none" /></div><div className="flex flex-col gap-1"><h3 className="text-3xl font-semibold leading-snug text-balance">Barrio de Salamanca Penthouse</h3><p className="text-base leading-snug text-balance">A sunlit sanctuary blending classic moldings with contemporary minimalism.</p></div></div>
+<div key="Chamberí Townhouse" className="flex flex-col gap-4 xl:gap-5 2xl:gap-6 h-full"><div className="aspect-square overflow-hidden"><ImageOrVideo imageSrc="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-2009.jpg" className="rounded-none" /></div><div className="flex flex-col gap-1"><h3 className="text-3xl font-semibold leading-snug text-balance">Chamberí Townhouse</h3><p className="text-base leading-snug text-balance">Restoring historical elegance while introducing fluid, modern living spaces.</p></div></div>
+<div key="Retiro Park Loft" className="flex flex-col gap-4 xl:gap-5 2xl:gap-6 h-full"><div className="aspect-square overflow-hidden"><ImageOrVideo imageSrc="https://img.freepik.com/free-photo/interior-design-with-photoframes-couch_23-2149385435.jpg" className="rounded-none" /></div><div className="flex flex-col gap-1"><h3 className="text-3xl font-semibold leading-snug text-balance">Retiro Park Loft</h3><p className="text-base leading-snug text-balance">An open-concept haven featuring raw textures and panoramic park views.</p></div></div>
+<div key="Justicia Studio" className="flex flex-col gap-4 xl:gap-5 2xl:gap-6 h-full"><div className="aspect-square overflow-hidden"><ImageOrVideo imageSrc="https://img.freepik.com/free-photo/minimalist-living-room-interior-design_23-2150794655.jpg" className="rounded-none" /></div><div className="flex flex-col gap-1"><h3 className="text-3xl font-semibold leading-snug text-balance">Justicia Studio</h3><p className="text-base leading-snug text-balance">Maximizing natural light and bespoke joinery in a compact, elegant footprint.</p></div></div></GridOrCarousel></ScrollReveal></div></section></div>
+    </>
   );
 }
