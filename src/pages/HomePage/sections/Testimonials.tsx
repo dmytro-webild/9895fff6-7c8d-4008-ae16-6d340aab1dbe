@@ -89,19 +89,22 @@ const TestimonialsInline = () => {
                 <div key={`top-${index}`} className="flex flex-col justify-between gap-4 xl:gap-5 2xl:gap-6 shrink-0 w-72 md:w-80 mr-5 p-6 xl:p-7 2xl:p-8 rounded card">
                     <p className="text-lg leading-snug line-clamp-3">{testimonial.quote}</p>
 
-                    <div className="flex items-center gap-3">
-                      <ImageOrVideo
-                        imageSrc={testimonial.imageSrc}
-                        videoSrc={testimonial.videoSrc}
-                        className="size-10 md:size-11 2xl:size-12 rounded-full object-cover"
-                      />
-                      <div className="flex flex-col min-w-0">
-                        <div className="flex items-center gap-1">
-                          <span className="text-base text-foreground font-semibold leading-snug truncate">{testimonial.name}</span>
-                          <BadgeCheck className="size-4 text-blue-500 shrink-0" />
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center gap-3">
+                        <ImageOrVideo
+                          imageSrc={testimonial.imageSrc}
+                          videoSrc={testimonial.videoSrc}
+                          className="size-10 md:size-11 2xl:size-12 rounded-full object-cover"
+                        />
+                        <div className="flex flex-col min-w-0">
+                          <div className="flex items-center gap-1">
+                            <span className="text-base text-foreground font-semibold leading-snug truncate">{testimonial.name}</span>
+                            <BadgeCheck className="size-4 text-blue-500 shrink-0" />
+                          </div>
+                          <span className="text-base text-foreground/75 leading-snug truncate">{testimonial.role}</span>
                         </div>
-                        <span className="text-base text-foreground/75 leading-snug truncate">{testimonial.role}</span>
                       </div>
+                      <Button text="Contact" variant="secondary" className="w-full py-2 text-sm" />
                     </div>
                 </div>
               ))}
@@ -114,19 +117,22 @@ const TestimonialsInline = () => {
                 <div key={`bottom-${index}`} className="flex flex-col justify-between gap-4 xl:gap-5 2xl:gap-6 shrink-0 w-72 md:w-80 mr-5 p-6 xl:p-7 2xl:p-8 rounded card">
                     <p className="text-lg leading-snug line-clamp-3">{testimonial.quote}</p>
 
-                    <div className="flex items-center gap-3">
-                      <ImageOrVideo
-                        imageSrc={testimonial.imageSrc}
-                        videoSrc={testimonial.videoSrc}
-                        className="size-10 md:size-11 2xl:size-12 rounded-full object-cover"
-                      />
-                      <div className="flex flex-col min-w-0">
-                        <div className="flex items-center gap-1">
-                          <span className="text-base text-foreground font-semibold leading-snug truncate">{testimonial.name}</span>
-                          <BadgeCheck className="size-4 text-blue-500 shrink-0" />
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center gap-3">
+                        <ImageOrVideo
+                          imageSrc={testimonial.imageSrc}
+                          videoSrc={testimonial.videoSrc}
+                          className="size-10 md:size-11 2xl:size-12 rounded-full object-cover"
+                        />
+                        <div className="flex flex-col min-w-0">
+                          <div className="flex items-center gap-1">
+                            <span className="text-base text-foreground font-semibold leading-snug truncate">{testimonial.name}</span>
+                            <BadgeCheck className="size-4 text-blue-500 shrink-0" />
+                          </div>
+                          <span className="text-base text-foreground/75 leading-snug truncate">{testimonial.role}</span>
                         </div>
-                        <span className="text-base text-foreground/75 leading-snug truncate">{testimonial.role}</span>
                       </div>
+                      <Button text="Contact" variant="secondary" className="w-full py-2 text-sm" />
                     </div>
                 </div>
               ))}
