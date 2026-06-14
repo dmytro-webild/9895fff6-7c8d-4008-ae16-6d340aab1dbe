@@ -13,6 +13,8 @@ export default function Layout() {
     { name: "Metrics", href: "/#metrics" },
     { name: "Testimonials", href: "/#testimonials" },
     { name: "Contact", href: "/#contact" },
+    { name: "Barrio De Salamanca Penthouse", href: "/barrio-de-salamanca-penthouse" },
+
   ];
 
   return (

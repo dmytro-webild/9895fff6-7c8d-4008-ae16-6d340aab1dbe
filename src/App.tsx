@@ -3,12 +3,14 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 
 import ProjectsPage from "@/pages/ProjectsPage";
+import BarrioDeSalamancaPenthousePage from "@/pages/BarrioDeSalamancaPenthousePage";
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/barrio-de-salamanca-penthouse" element={<BarrioDeSalamancaPenthousePage />} />
       </Route>
     </Routes>
   );
