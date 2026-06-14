@@ -9,32 +9,25 @@ import { StyleProvider } from "@/components/ui/StyleProvider";
 export default function Layout() {
   const navItems = [
   {
-    "name": "About",
-    "href": "#about"
+    "name": "About",    "href": "#about"
   },
   {
-    "name": "Projects",
-    "href": "#projects"
+    "name": "Projects",    "href": "#projects"
   },
   {
-    "name": "Contact",
-    "href": "#contact"
+    "name": "Contact",    "href": "#contact"
   },
   {
-    "name": "Hero",
-    "href": "#hero"
+    "name": "Hero",    "href": "#hero"
   },
   {
-    "name": "Features",
-    "href": "#features"
+    "name": "Features",    "href": "#features"
   },
   {
-    "name": "Metrics",
-    "href": "#metrics"
+    "name": "Metrics",    "href": "#metrics"
   },
   {
-    "name": "Testimonials",
-    "href": "#testimonials"
+    "name": "Testimonials",    "href": "#testimonials"
   }
 ];
 
@@ -44,11 +37,9 @@ export default function Layout() {
       <SectionErrorBoundary name="navbar">
         <NavbarFloatingLogo
       logo="Studio Madrid"
-      logoImageSrc="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=200&h=200&fit=crop"
+      logoImageSrc="https://storage.googleapis.com/webild/default/no-image.jpg?id=37zs7n"
       ctaButton={{
-        text: "Book Consultation",
-        href: "#contact",
-      }}
+        text: "Book Consultation",        href: "#contact"}}
      navItems={navItems} />
       </SectionErrorBoundary>
       <main className="flex-grow">
@@ -60,17 +51,11 @@ export default function Layout() {
       copyright="© 2024 Studio Madrid. All rights reserved."
       socialLinks={[
         {
-          icon: Instagram,
-          href: "#",
-        },
+          icon: "Instagram",          href: "#"},
         {
-          icon: Linkedin,
-          href: "#",
-        },
+          icon: "Linkedin",          href: "#"},
         {
-          icon: Image,
-          href: "#",
-        },
+          icon: "Image",          href: "#"},
       ]}
     />
       </SectionErrorBoundary>
