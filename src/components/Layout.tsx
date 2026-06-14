@@ -13,7 +13,9 @@ export default function Layout() {
     { name: "Hero", href: "#hero" },
     { name: "Features", href: "#features" },
     { name: "Metrics", href: "#metrics" },
-    { name: "Testimonials", href: "#testimonials" }
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Projects", href: "/projects" },
+
   ];
 
   return (
