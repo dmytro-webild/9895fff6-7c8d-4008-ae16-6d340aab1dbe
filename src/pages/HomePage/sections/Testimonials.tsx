@@ -5,6 +5,80 @@ import TextAnimation from "@/components/ui/TextAnimation";
 import ImageOrVideo from "@/components/ui/ImageOrVideo";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { BadgeCheck } from "lucide-react";
+import { useRef, useState } from "react";
+
+const DraggableMarqueeRow = ({ items, duration, reverse = false }: { items: any[], duration: string, reverse?: boolean }) => {
+  const containerRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - (containerRef.current as any).offsetLeft);
+    setScrollLeft((containerRef.current as any).scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setIsHovered(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - (containerRef.current as any).offsetLeft;
+    const walk = (x - startX) * 2;
+    (containerRef.current as any).scrollLeft = scrollLeft - walk;
+  };
+
+  return (
+    <div 
+      className="overflow-hidden mask-fade-x cursor-grab active:cursor-grabbing"
+      ref={containerRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+      style={{ overflowX: isHovered ? 'auto' : 'hidden', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+    >
+      <div 
+        className={`flex w-max ${isHovered ? '' : (reverse ? 'animate-marquee-horizontal-reverse' : 'animate-marquee-horizontal')} mb-5`} 
+        style={{ animationDuration: duration }}
+      >
+        {[...items, ...items, ...items, ...items].map((item, i) => (
+          <div key={i} className="flex-none w-[300px] md:w-[400px] mx-2.5">
+            <div className="card rounded-lg p-6 h-full flex flex-col justify-between">
+              <div>
+                <p className="text-lg md:text-xl text-foreground mb-6">"{item.quote}"</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                  <ImageOrVideo imageSrc={item.imageSrc} videoSrc={item.videoSrc} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-1">
+                    <p className="font-semibold text-foreground">{item.name}</p>
+                    <BadgeCheck className="w-4 h-4 text-blue-500" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">{item.role}</p>
+                </div>
+                <Button text="Contact" variant="secondary" className="text-xs px-3 py-1" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const testimonials = [
   {
