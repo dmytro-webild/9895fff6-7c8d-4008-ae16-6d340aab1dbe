@@ -44,6 +44,7 @@ export default function Layout() {
       <SectionErrorBoundary name="navbar">
         <NavbarFloatingLogo
       logo="Studio Madrid"
+      logoImageSrc="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=200&h=200&fit=crop"
       ctaButton={{
         text: "Book Consultation",
         href: "#contact",
