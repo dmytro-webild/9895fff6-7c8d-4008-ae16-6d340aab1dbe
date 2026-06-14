@@ -1,74 +1,25 @@
-import { routes } from "@/routes";
-import NavbarCentered from "@/components/ui/NavbarCentered";
-import HeroSplitMediaGrid from "@/components/sections/hero/HeroSplitMediaGrid";
-import AboutFeaturesSplit from "@/components/sections/about/AboutFeaturesSplit";
-import FeaturesMediaCarousel from "@/components/sections/features/FeaturesMediaCarousel";
-import ContactCta from "@/components/sections/contact/ContactCta";
-import FooterMinimal from "@/components/sections/footer/FooterMinimal";
+import Button from "@/components/ui/Button";
+import HeroBackgroundSlot from "@/components/ui/HeroBackgroundSlot";
+import TextAnimation from "@/components/ui/TextAnimation";
+import ImageOrVideo from "@/components/ui/ImageOrVideo";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import AvatarGroup from "@/components/ui/AvatarGroup";
+import { cls } from "@/lib/utils";
 
 export default function BarrioDeSalamancaPenthousePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <NavbarCentered
-        logo="Studio"
-        navItems={routes.map((r) => ({ name: r.label, href: r.path }))}
-        ctaButton={{ text: "Inquire Now", href: "/contact" }}
-      />
-
-      <main className="flex-grow">
-        <HeroSplitMediaGrid
-          tag="Featured Project"
-          title="Barrio de Salamanca Penthouse"
-          description="A masterclass in modern elegance located in the heart of Madrid's most exclusive neighborhood. This complete renovation blends classic architectural details with contemporary luxury."
-          primaryButton={{ text: "View Gallery", href: "#gallery" }}
-          secondaryButton={{ text: "Project Details", href: "#details" }}
-          items={[
-            { imageSrc: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" },
-            { imageSrc: "https://images.unsplash.com/photo-1600607687931-cecebd808ce3?auto=format&fit=crop&w=800&q=80" },
-            { imageSrc: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?auto=format&fit=crop&w=800&q=80" },
-            { imageSrc: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" }
-          ]}
-        />
-
-        <div id="details">
-          <AboutFeaturesSplit
-            tag="Design Philosophy"
-            title="Elevating Urban Living"
-            description="Every detail of this penthouse was meticulously crafted to maximize natural light and create a seamless flow between indoor and outdoor spaces, respecting the building's heritage while introducing modern comforts."
-            imageSrc="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
-            items={[
-              { icon: "✨", title: "Custom Millwork", description: "Bespoke oak paneling and integrated storage solutions throughout the residence." },
-              { icon: "🌇", title: "Panoramic Terrace", description: "A 150sqm wrap-around terrace offering unobstructed views of the Madrid skyline." },
-              { icon: "🎛️", title: "Smart Integration", description: "State-of-the-art climate, lighting, and audio control systems hidden from view." }
-            ]}
-          />
-        </div>
-
-        <div id="gallery">
-          <FeaturesMediaCarousel
-            tag="Spaces"
-            title="Explore the Residence"
-            description="Take a closer look at the distinct areas that make up this extraordinary home."
-            items={[
-              { title: "The Grand Salon", description: "Featuring restored original moldings and a custom marble fireplace.", buttonIcon: "→", imageSrc: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" },
-              { title: "Master Suite", description: "A private sanctuary with dual walk-in closets and a spa-inspired en-suite.", buttonIcon: "→", imageSrc: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" },
-              { title: "Chef's Kitchen", description: "Minimalist design hiding professional-grade appliances behind custom cabinetry.", buttonIcon: "→", imageSrc: "https://images.unsplash.com/photo-1600585154526-990dced4ea0d?auto=format&fit=crop&w=800&q=80" }
-            ]}
-          />
-        </div>
-
-        <ContactCta
-          tag="Start Your Project"
-          text="Ready to transform your space into something extraordinary?"
-          primaryButton={{ text: "Book a Consultation", href: "/contact" }}
-          secondaryButton={{ text: "Back to Portfolio", href: "/projects" }}
-        />
-      </main>
-
-      <FooterMinimal
-        brand="Studio"
-        copyright="© 2024 Studio. All rights reserved."
-      />
-    </div>
+    <>
+      <div data-webild-section="HeroBillboard"><section aria-label="Hero section" className="relative pt-25 pb-20 md:pt-30"><HeroBackgroundSlot /><div className="flex flex-col gap-12 md:gap-15 w-content-width mx-auto"><div className="flex flex-col items-center gap-3 text-center"><div className="px-3 py-1 mb-1 text-sm card rounded w-fit"><p>Residential Portfolio</p></div><TextAnimation text="Barrio de Salamanca Penthouse" variant="fade-blur" gradientText={true} tag="h1" className="md:max-w-8/10 text-7xl 2xl:text-8xl leading-[1.15] font-semibold text-center text-balance" /><TextAnimation text="A bespoke sanctuary in the heart of Madrid. We transformed this penthouse into a sophisticated retreat, blending natural textures with abundant light to tell a unique personal story." variant="fade-blur" gradientText={false} tag="p" className="md:max-w-7/10 text-lg md:text-xl leading-snug text-balance" /><div className="flex flex-wrap justify-center gap-3 mt-2 md:mt-3"><Button text="Explore Project" href="#details" variant="primary" /><Button text="All Projects" href="/projects" variant="secondary" animationDelay={0.1} /></div></div><ScrollReveal variant="fade-blur" delay={0.2} className="w-full p-2 xl:p-3 2xl:p-4 card rounded overflow-hidden"><ImageOrVideo imageSrc="https://img.freepik.com/free-photo/3d-rendering-modern-dining-room-living-room-with-luxury-decor_105762-2216.jpg" className="aspect-4/5 md:aspect-video" /></ScrollReveal></div></section></div>
+      <div data-webild-section="AboutTextSplit"><section aria-label="About section" className="py-20"><div className="flex flex-col gap-20 mx-auto w-content-width"><div className="flex flex-col md:flex-row gap-3 md:gap-15"><div className="w-full md:w-1/2"><TextAnimation text="A Sanctuary Above Salamanca" variant="fade-blur" gradientText={true} tag="h2" className="text-7xl 2xl:text-8xl leading-[1.15] font-semibold text-balance" /></div><div className="flex flex-col gap-2 w-full md:w-1/2"><TextAnimation key={0} text="Perched high above Madrid's most exclusive district, this penthouse is a masterclass in understated luxury. We transformed a classic layout into a fluid, light-filled sanctuary." variant="fade-blur" gradientText={false} tag="p" className="text-xl md:text-2xl leading-snug text-balance" />
+<TextAnimation key={1} text="Rich textures of natural stone and bespoke oak cabinetry anchor the space. Expansive windows invite the golden Spanish sun to dance across the minimalist forms." variant="fade-blur" gradientText={false} tag="p" className="text-xl md:text-2xl leading-snug text-balance" />
+<TextAnimation key={2} text="Every detail was selected to reflect the client's refined taste, creating a personal narrative woven through bespoke design and timeless elegance." variant="fade-blur" gradientText={false} tag="p" className="text-xl md:text-2xl leading-snug text-balance" /><div className="flex flex-wrap gap-3 mt-2 md:mt-3"><Button text="Back to Projects" href="/projects" variant="primary" /><Button text="Inquire Now" href="/contact" variant="secondary" animationDelay={0.1} /></div></div></div><div className="w-full border-b border-foreground/5" /></div></section></div>
+      <div data-webild-section="FeaturesImageBento"><section aria-label="Features image bento section" className="py-20"><div className="flex flex-col gap-8 md:gap-10"><div className="flex flex-col items-center w-content-width mx-auto gap-2"><div className="px-3 py-1 mb-1 text-sm card rounded w-fit"><p>Featured Project</p></div><TextAnimation text="Barrio de Salamanca Penthouse" variant="fade-blur" gradientText={true} tag="h2" className="md:max-w-8/10 text-6xl 2xl:text-7xl leading-[1.15] font-semibold text-center text-balance" /><TextAnimation text="A masterclass in bespoke luxury, blending classic Madrid architecture with contemporary elegance and curated textures." variant="fade-blur" gradientText={false} tag="p" className="md:max-w-7/10 text-lg md:text-xl leading-snug text-center text-balance" /><div className="flex flex-wrap justify-center gap-3 mt-2 md:mt-3"><Button text="View Gallery" href="#gallery" variant="primary" /><Button text="All Projects" href="/projects" variant="secondary" animationDelay={0.1} /></div></div><div className="w-content-width mx-auto grid grid-cols-1 md:grid-cols-6 gap-3"><ScrollReveal key={0} variant="fade" delay={0} className="col-span-1 group md:col-span-2"><div className="overflow-hidden rounded"></div></ScrollReveal>
+<ScrollReveal key={1} variant="fade" delay={0.1} className="col-span-1 group md:col-span-4"><div className="overflow-hidden rounded"></div></ScrollReveal>
+<ScrollReveal key={2} variant="fade" delay={0} className="col-span-1 group md:col-span-3"><div className="overflow-hidden rounded"></div></ScrollReveal>
+<ScrollReveal key={3} variant="fade" delay={0.1} className="col-span-1 group md:col-span-3"><div className="overflow-hidden rounded"></div></ScrollReveal>
+<ScrollReveal key={4} variant="fade" delay={0} className="col-span-1 group md:col-span-2"><div className="overflow-hidden rounded"></div></ScrollReveal>
+<ScrollReveal key={5} variant="fade" delay={0.1} className="col-span-1 group md:col-span-2"><div className="overflow-hidden rounded"></div></ScrollReveal>
+<ScrollReveal key={6} variant="fade" delay={0.2} className="col-span-1 group md:col-span-2"><div className="overflow-hidden rounded"></div></ScrollReveal></div></div></section></div>
+    </>
   );
 }
