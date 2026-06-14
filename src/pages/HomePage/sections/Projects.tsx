@@ -126,7 +126,7 @@ const ProjectsInline = () => {
                 <div className="absolute inset-x-5 bottom-5 xl:inset-x-6 xl:bottom-6 2xl:inset-x-7 2xl:bottom-7 flex flex-col text-background">
                   <span className="text-2xl font-semibold leading-snug truncate">{item.title}</span>
                   <span className="text-base leading-snug truncate mb-3">{item.description}</span>
-                  <Button text="View Project" href={item.href || "#"} variant="secondary" className="w-fit" />
+                  <Button text="View Project" href={item.href || "#"} variant="secondary" className="w-max mt-2" />
                 </div>
               </div>
             );
