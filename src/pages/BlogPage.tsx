@@ -1,91 +1,19 @@
-import { routes } from "@/routes";
-import NavbarCentered from "@/components/ui/NavbarCentered";
-import HeroBillboard from "@/components/sections/hero/HeroBillboard";
-import BlogMediaCards from "@/components/sections/blog/BlogMediaCards";
-import ContactCta from "@/components/sections/contact/ContactCta";
-import FooterSimple from "@/components/sections/footer/FooterSimple";
+import Button from "@/components/ui/Button";
+import HeroBackgroundSlot from "@/components/ui/HeroBackgroundSlot";
+import TextAnimation from "@/components/ui/TextAnimation";
+import ImageOrVideo from "@/components/ui/ImageOrVideo";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import AvatarGroup from "@/components/ui/AvatarGroup";
+import { ArrowUpRight, Loader2 } from "lucide-react";
+import GridOrCarousel from "@/components/ui/GridOrCarousel";
+import { useButtonClick } from "@/hooks/useButtonClick";
+import useBlogPosts from "@/hooks/useBlogPosts";
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <NavbarCentered
-        logo="Webild"
-        navItems={routes.map((r) => ({ name: r.label, href: r.path }))}
-        ctaButton={{ text: "Get Started", href: "/contact" }}
-      />
-      
-      <main>
-        <HeroBillboard
-          tag="Our Blog"
-          title="Insights & Stories"
-          description="Read the latest news, tutorials, and insights from our team of experts."
-          primaryButton={{ text: "Read Latest", href: "#latest" }}
-          secondaryButton={{ text: "View All", href: "#all" }}
-        />
-
-        <div id="latest">
-          <BlogMediaCards
-            tag="Latest Posts"
-            title="Featured Articles"
-            description="Explore our most popular and recent content."
-            items={[
-              {
-                category: "Design",
-                title: "The Future of UI",
-                excerpt: "Exploring upcoming trends in user interface design and how they impact user experience.",
-                authorName: "Jane Doe",
-                authorImageSrc: "https://i.pravatar.cc/150?u=1",
-                date: "Oct 12, 2023",
-                imageSrc: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&q=80"
-              },
-              {
-                category: "Development",
-                title: "React Performance Tips",
-                excerpt: "How to optimize your React applications for speed and efficiency in production.",
-                authorName: "John Smith",
-                authorImageSrc: "https://i.pravatar.cc/150?u=2",
-                date: "Oct 10, 2023",
-                imageSrc: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
-              },
-              {
-                category: "Business",
-                title: "Scaling Your Startup",
-                excerpt: "Key strategies for growing your tech business and managing a growing team.",
-                authorName: "Alice Johnson",
-                authorImageSrc: "https://i.pravatar.cc/150?u=3",
-                date: "Oct 05, 2023",
-                imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-              }
-            ]}
-          />
-        </div>
-
-        <ContactCta
-          tag="Newsletter"
-          text="Never miss an update. Subscribe to our newsletter for weekly insights."
-          primaryButton={{ text: "Subscribe Now", href: "/contact" }}
-          secondaryButton={{ text: "Follow on Twitter", href: "#" }}
-        />
-      </main>
-
-      <FooterSimple
-        brand="Webild"
-        columns={[
-          {
-            title: "Company",
-            items: [
-              { label: "About Us", href: "/about" },
-              { label: "Careers", href: "/careers" },
-              { label: "Contact", href: "/contact" }
-            ]
-          }
-        ]}
-        copyright="© 2024 Webild. All rights reserved."
-        links={[
-          { label: "Privacy Policy", href: "/privacy" },
-          { label: "Terms of Service", href: "/terms" }
-        ]}
-      />
-    </div>
+    <>
+      <div data-webild-section="HeroBillboard"><section aria-label="Hero section" className="relative pt-25 pb-20 md:pt-30"><HeroBackgroundSlot /><div className="flex flex-col gap-12 md:gap-15 w-content-width mx-auto"><div className="flex flex-col items-center gap-3 text-center"><div className="px-3 py-1 mb-1 text-sm card rounded w-fit"><p>Design Journal</p></div><TextAnimation text="Stories of Space and Light" variant="fade-blur" gradientText={true} tag="h1" className="md:max-w-8/10 text-7xl 2xl:text-8xl leading-[1.15] font-semibold text-center text-balance" /><TextAnimation text="Explore our latest thoughts on bespoke interiors, architectural trends, and the art of curating spaces that reflect your personal essence." variant="fade-blur" gradientText={false} tag="p" className="md:max-w-7/10 text-lg md:text-xl leading-snug text-balance" /><div className="flex flex-wrap justify-center gap-3 mt-2 md:mt-3"><Button text="Read Latest" href="#latest" variant="primary" /><Button text="Explore Topics" href="#topics" variant="secondary" animationDelay={0.1} /></div></div><ScrollReveal variant="fade-blur" delay={0.2} className="w-full p-2 xl:p-3 2xl:p-4 card rounded overflow-hidden"><ImageOrVideo imageSrc="https://picsum.photos/seed/2089910226/1200/800" className="aspect-4/5 md:aspect-video" /></ScrollReveal></div></section></div>
+      <div data-webild-section="BlogMediaCards"><section aria-label="Blog section" className="py-20"><div className="w-content-width mx-auto flex justify-center"><Loader2 className="size-8 animate-spin text-foreground" strokeWidth={1.5} /></div></section></div>
+    </>
   );
 }
