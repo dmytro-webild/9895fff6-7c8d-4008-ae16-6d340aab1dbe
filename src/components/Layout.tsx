@@ -14,6 +14,8 @@ export default function Layout() {
     { name: "Testimonials", href: "/#testimonials" },
     { name: "Contact", href: "/#contact" },
     { name: "Barrio De Salamanca Penthouse", href: "/barrio-de-salamanca-penthouse" },
+    { name: "Blog", href: "/blog" },
+
 
   ];
 
